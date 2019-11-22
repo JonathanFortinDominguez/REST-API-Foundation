@@ -13,4 +13,10 @@ namespace Main.Models {
         public DateTime activate_date { get; set; }
         public string inspection_certificat { get; set; }
     }
+
+    public class ElevatorStatus
+    {
+        public int id { get; set; }
+        public string status { get; set; }
+    }
 }

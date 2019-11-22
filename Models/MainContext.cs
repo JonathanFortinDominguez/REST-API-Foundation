@@ -15,6 +15,7 @@ namespace Main.Models {
         public DbSet<ColumnItems> columns { get; set; }
         public DbSet<CustomerItems> customers { get; set; }
         public DbSet<ElevatorItems> elevators { get; set; }
+        public DbSet<ElevatorStatus> statuses { get; set; }
         public DbSet<EmployeeItems> employees { get; set; }
         public DbSet<LeadItems> leads { get; set; }
         public DbSet<QuoteItems> quotes { get; set; }

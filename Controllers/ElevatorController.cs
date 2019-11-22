@@ -85,6 +85,29 @@ namespace Elevator.Controllers {
                                                 // to the database through postman.
         } 
 
+        [HttpPut("updatestatus/{id}")]
+        public async Task<IActionResult> PutElevatorStatus(long id, ElevatorStatus elevator)
+        {
+
+            if (id != elevator.id)
+            {
+                return BadRequest();
+            }
+
+            var current_elevator = _context.elevators.Find(elevator.id);
+            current_elevator.status = elevator.status;
+
+            if (elevator.status == "Intervention" || elevator.status == "Active" || elevator.status == "Inactive"){
+
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+
+            else
+            {
+                return BadRequest();
+            }
+        }
 
         private bool ElevatorExists(int id)
         {

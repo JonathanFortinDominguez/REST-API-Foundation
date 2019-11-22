@@ -44,8 +44,8 @@ namespace Address.Controllers {
         [HttpGet("cities")]
         public ActionResult<List<string>> GetCities () {
          
-           var cities = _context.addresses.Where(c => _context.buildings.Select(b => b.address_id).Contains(c.id)).Select(d=>d.city).Distinct();
-            return cities.ToList();
+           var cities = _context.addresses.Where(c => _context.buildings.Select(b => b.address_id).Contains(c.id)).Select(d=>d.city).Distinct().ToList();
+            return cities;
         }
 
         [HttpPut("{id}")]

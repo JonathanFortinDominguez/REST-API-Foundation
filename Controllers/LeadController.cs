@@ -27,7 +27,7 @@ namespace Lead.Controllers {
             return await _context.leads.ToListAsync();
         }
 
-        [HttpGet("{lastmonth}")]
+        [HttpGet("lastmonth")]
        // https://docs.microsoft.com/en-us/dotnet/csharp/linq/query-expression-basics (How to make query to database using IQueryable)
         public IEnumerable<LeadItems> GetLead()
         {
@@ -46,6 +46,15 @@ namespace Lead.Controllers {
             return last;
             
         }
+
+        [HttpGet("newleads")]
+       public IEnumerable<LeadItems> GetNewLeads()
+       {
+           // Using IQueryable, find all Intervention with status inactive or intervention
+           IQueryable<LeadItems> leads = from newLeads in _context.leads where newLeads.customer_id == null select newLeads;
+           return leads;
+        }
+
 
       [HttpPut("{id}")] // We can add a lead to the database through postman and the put method.
         public async Task<IActionResult> PutTodoItem(int id, LeadItems leadItems)
