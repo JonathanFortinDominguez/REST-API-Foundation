@@ -33,6 +33,42 @@ namespace Elevator.Controllers {
             return status;
         }
 
+        [HttpGet("intervention")]
+        // https://stackoverflow.com/questions/1578778/using-iqueryable-with-linq
+       // https://docs.microsoft.com/en-us/dotnet/csharp/linq/query-expression-basics (How to make query to database using IQueryable)
+
+        public IEnumerable<ElevatorItems> GetInterventionElevators()
+        {
+            // Using IQueryable, we can find all elevators with status set to inactive or intervention
+            IQueryable<ElevatorItems> status = from elevStatus in _context.elevators where elevStatus.status == "Intervention" select elevStatus;
+            
+            return status;
+        }
+
+        [HttpGet("inactive")]
+        // https://stackoverflow.com/questions/1578778/using-iqueryable-with-linq
+       // https://docs.microsoft.com/en-us/dotnet/csharp/linq/query-expression-basics (How to make query to database using IQueryable)
+
+        public IEnumerable<ElevatorItems> GetInactiveElevators()
+        {
+            // Using IQueryable, we can find all elevators with status set to inactive or intervention
+            IQueryable<ElevatorItems> status = from elevStatus in _context.elevators where elevStatus.status == "Inactive" select elevStatus;
+            
+            return status;
+        }
+
+        [HttpGet("active")]
+        // https://stackoverflow.com/questions/1578778/using-iqueryable-with-linq
+       // https://docs.microsoft.com/en-us/dotnet/csharp/linq/query-expression-basics (How to make query to database using IQueryable)
+
+        public IEnumerable<ElevatorItems> GetActiveElevators()
+        {
+            // Using IQueryable, we can find all elevators with status set to inactive or intervention
+            IQueryable<ElevatorItems> status = from elevStatus in _context.elevators where elevStatus.status == "Active" select elevStatus;
+            
+            return status;
+        }
+
 
 
 
